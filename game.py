@@ -12,16 +12,15 @@ class Card:
 		return f"{self.value} of {self.suit}"
 
 class Deck:
-	num_cards = 0
 	def __init__(self):
+		self.cards = []
 		for suit in ("Hearts", "Diamonds", "Clubs", "Spades"):
 			for value in ("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"):
-				Card(suit, value)
-				Deck.num_cards += 1
+				self.cards.append(Card(suit, value))
 	def count(self):
-		return Deck.num_cards
+		return self.cards.length
 	def __repr__(self):
-		return f"Deck of {num_cards} cards"
+		return f"Deck of {self.count()} cards"
 	def _deal(self, num):
 		if num <= num_cards:
 			num_cards -= num
@@ -34,4 +33,7 @@ class Deck:
 
 		else:
 			raise ValueError("Only full decks can be shuffled")
-			
+	def deal_card(self):
+		pass
+	def deal_hand(self, num):
+		pass
