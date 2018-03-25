@@ -13,27 +13,33 @@ class Card:
 
 class Deck:
 	def __init__(self):
-		self.cards = []
-		for suit in ("Hearts", "Diamonds", "Clubs", "Spades"):
-			for value in ("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"):
-				self.cards.append(Card(suit, value))
+		suits = ("Hearts", "Diamonds", "Clubs", "Spades")
+		values =  ("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K")
+		self.cards = [Card(value, suit) for suit in suits for value in values]
+
 	def count(self):
-		return self.cards.length
+		return len(self.cards)
+
 	def __repr__(self):
 		return f"Deck of {self.count()} cards"
+
 	def _deal(self, num):
-		if num <= num_cards:
-			num_cards -= num
-		else:
-			num_cards = 0
-		if num_cards == 0:
+		count = self.count()
+		if count == 0:
 			raise ValueError("All cards have been dealt")
+		actual = min(count, num)
+		cards = self.cards[-actual:]
+		self.cards = self.cards[:-actual]
+		return cards
+
 	def shuffle(self):
 		if num_cards == 52:
 
 		else:
 			raise ValueError("Only full decks can be shuffled")
+
 	def deal_card(self):
 		pass
+
 	def deal_hand(self, num):
 		pass
