@@ -1,5 +1,7 @@
+from random import shuffle
+
 class Card:
-	def __init__(self, suit, value):
+	def __init__(self, value, suit):
 		if suit in ("Hearts", "Diamonds", "Clubs", "Spades"):
 			self.suit = suit
 		else:
@@ -33,13 +35,12 @@ class Deck:
 		return cards
 
 	def shuffle(self):
-		if num_cards == 52:
-
-		else:
+		if self.count() < 52:
 			raise ValueError("Only full decks can be shuffled")
+		shuffle(self.cards)
 
 	def deal_card(self):
-		pass
+		return self._deal(1)[0]
 
-	def deal_hand(self, num):
-		pass
+	def deal_hand(self, hand_size):
+		return self._deal(hand_size)
